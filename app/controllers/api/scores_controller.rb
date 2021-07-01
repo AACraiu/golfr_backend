@@ -5,21 +5,33 @@ module Api
 
     def user_feed
       scores = Score.all.order(played_at: :desc, id: :desc)
-      serialized_scores = scores.map do |score|
-        {
-          id: score.id,
-          user_id: score.user_id,
-          user_name: score.user.name,
-          total_score: score.total_score,
-          played_at: score.played_at,
-        }
-      end
+      serialized_scores = scores.map(&:serialize)
 
       response = {
         scores: serialized_scores,
       }
 
       render json: response.to_json
+    end
+
+    def create
+      score = current_user.scores.build(score_params)
+
+      if score.save
+        render json: {
+          score: score.serialize
+        }
+      else
+        render json: {
+          errors: score.errors.messages
+        }, status: :bad_request
+      end
+    end
+
+    private
+
+    def score_params
+      params.require(:score).permit(:total_score, :played_at)
     end
   end
 end
