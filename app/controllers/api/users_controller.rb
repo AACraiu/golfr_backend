@@ -3,8 +3,6 @@ module Api
   class UsersController < ApplicationController
     include Devise::Controllers::Helpers
 
-    before_action :logged_in!, only: [ :feed ]
-
     def login
       user = User.find_by('lower(email) = ?', params[:email])
 
@@ -26,16 +24,6 @@ module Api
           token: current_token
         }
       }.to_json
-    end
-
-    def feed
-      Rails.logger.info 'Not implemented'
-    end
-
-    private
-
-    def current_token
-      request.env['warden-jwt_auth.token']
     end
   end
 end

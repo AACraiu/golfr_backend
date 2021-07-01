@@ -11,4 +11,8 @@ class ApplicationController < ActionController::API
       ]
     }, status: :unauthorized
   end
+
+  def current_token
+    request.env['warden-jwt_auth.token']
+  end
 end

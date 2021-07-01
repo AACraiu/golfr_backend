@@ -11,3 +11,29 @@ User.create!(
   password: '123456',
   password_confirmation: '123456'
 )
+
+User.create!(
+  name: 'Sergiu Apostu',
+  email: 'sapostu@golfr.com',
+  password: '123456',
+  password_confirmation: '123456'
+)
+
+User.create!(
+  name: 'Alex Tandrau',
+  email: 'atandrau@golfr.com',
+  password: '123456',
+  password_confirmation: '123456'
+)
+
+rng = Random.new
+now = Time.zone.today
+User.all.each do |user|
+  5.times do |i|
+    Score.create!(
+      user: user,
+      total_score: rng.rand(66..99),
+      played_at: now - 5.days + i.days
+    )
+  end
+end

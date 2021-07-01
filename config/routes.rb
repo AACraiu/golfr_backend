@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     post 'login', to: 'users#login'
-    get 'feed', to: 'users#feed'
+    get 'feed', to: 'scores#user_feed'
   end
 end
