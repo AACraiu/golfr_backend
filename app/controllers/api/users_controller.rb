@@ -1,4 +1,5 @@
 module Api
+  # Controller that handles authorization and user data fetching
   class UsersController < ApplicationController
     include Devise::Controllers::Helpers
 
@@ -12,7 +13,7 @@ module Api
           errors: [
             'Invalid email/password combination'
           ]
-        }, status: 401
+        }, status: :unauthorized
         return
       end
 
@@ -28,6 +29,7 @@ module Api
     end
 
     def feed
+      Rails.logger.info 'Not implemented'
     end
 
     private

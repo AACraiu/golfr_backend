@@ -1,5 +1,5 @@
 # Load the Rails application.
-require_relative "application"
+require_relative 'application'
 
 # Load environmental variables
 env_file = Rails.root.join('config', "#{Rails.env}_env.yml")

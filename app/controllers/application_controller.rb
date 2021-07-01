@@ -1,3 +1,4 @@
+# Base class for Rails controllers
 class ApplicationController < ActionController::API
   include Devise::Controllers::Helpers
 
@@ -8,6 +9,6 @@ class ApplicationController < ActionController::API
       errors: [
         'User not logged in'
       ]
-    }, status: 401
+    }, status: :unauthorized
   end
 end
