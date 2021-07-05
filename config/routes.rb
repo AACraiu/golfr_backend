@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users, skip: :all
+
+  namespace :api do
+    post 'login', to: 'users#login'
+    get 'feed', to: 'scores#user_feed'
+    resources :scores, only: %i[create destroy]
+  end
 end
