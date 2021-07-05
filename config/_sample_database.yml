@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 10
+  timeout: 10000
+  port: 5432
+
+development:
+  <<: *default
+  host: localhost
+  database: golfr_dev
+
+test:
+  <<: *default
+  database: golfr_test
+
+production:
+  <<: *default
