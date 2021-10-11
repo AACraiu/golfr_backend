@@ -1,8 +1,6 @@
 require:
   - rubocop-rails
   - rubocop-gitlab-security
-AllCops:
-  NewCops: enable
 Style/CollectionMethods:
   Enabled: true
   PreferredMethods:
@@ -34,6 +32,10 @@ Layout/LineLength:
   IgnoredPatterns: ['(\A|\s)#']
   Exclude:
     - 'db/**/*.rb'
+Metrics/MethodLength:
+  Max: 40
+  Exclude:
+    - 'db/data/**/*'
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
@@ -42,14 +44,18 @@ Metrics/BlockLength:
 Metrics/AbcSize:
   Exclude:
     - 'db/migrate/*'
+    - 'db/data/**/*'
     - 'spec/test_helpers.rb'
+Metrics/ClassLength:
+  Max: 150
+  Exclude:
+    - 'db/data/**/*'
 Metrics/ModuleLength:
   Max: 150
-Metrics/MethodLength:
-  Max: 30
 Style/Documentation:
   Exclude:
     - 'db/migrate/*'
+    - 'db/data/**/*'
     - 'spec/**/*'
 Style/ClassAndModuleChildren:
   Exclude:
@@ -64,6 +70,7 @@ Lint/ParenthesesAsGroupedExpression:
 Style/SymbolArray:
   Exclude:
     - 'db/migrate/*'
+    - 'db/data/**/*'
 Metrics/ParameterLists:
   CountKeywordArgs: false
 Layout/EmptyLinesAroundAttributeAccessor:
@@ -163,6 +170,15 @@ Style/RegexpLiteral:
   Enabled: true
   EnforcedStyle: slashes
   AllowInnerSlashes: true
+Style/Encoding:
+  Exclude:
+    - 'db/data_schema.rb'
+Layout/EmptyLineAfterMagicComment:
+  Exclude:
+    - 'db/data_schema.rb'
+Style/NumericLiterals:
+  Exclude:
+    - 'db/data_schema.rb'
 GitlabSecurity/DeepMunge:
   Enabled: true
 GitlabSecurity/JsonSerialization:
@@ -177,5 +193,115 @@ GitlabSecurity/SystemCommandInjection:
   Enabled: true
 GitlabSecurity/PublicSend:
   Enabled: false
-Style/BlockComments:
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'db/data/**/*'
+Style/GlobalVars:
+  AllowedVariables:
+    - $BROWSER_CLUSTER
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'db/data/**/*'
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'db/data/**/*'
+Lint/ConstantDefinitionInBlock:
   Enabled: false
+Naming/VariableNumber:
+  Enabled: false
+Gemspec/DateAssignment:
+  Enabled: false
+Layout/LineEndStringConcatenationIndentation:
+  Enabled: true
+Layout/SpaceBeforeBrackets:
+  Enabled: true
+Lint/AmbiguousAssignment:
+  Enabled: true
+Lint/DeprecatedConstants:
+  Enabled: true
+Lint/DuplicateBranch:
+  Enabled: true
+Lint/DuplicateRegexpCharacterClassElement:
+  Enabled: true
+Lint/EmptyBlock:
+  Enabled: false
+Lint/EmptyClass:
+  Enabled: true
+Lint/EmptyInPattern:
+  Enabled: true
+Lint/LambdaWithoutLiteralBlock:
+  Enabled: true
+Lint/NoReturnInBeginEndBlocks:
+  Enabled: true
+Lint/NumberedParameterAssignment:
+  Enabled: true
+Lint/OrAssignmentToConstant:
+  Enabled: true
+Lint/RedundantDirGlobSort:
+  Enabled: true
+Lint/SymbolConversion:
+  Enabled: true
+Lint/ToEnumArguments:
+  Enabled: true
+Lint/TripleQuotes:
+  Enabled: true
+Lint/UnexpectedBlockArity:
+  Enabled: true
+Lint/UnmodifiedReduceAccumulator:
+  Enabled: true
+Naming/InclusiveLanguage:
+  Enabled: false
+Style/ArgumentsForwarding:
+  Enabled: true
+Style/CollectionCompact:
+  Enabled: true
+Style/DocumentDynamicEvalDefinition:
+  Enabled: true
+Style/EndlessMethod:
+  Enabled: true
+Style/HashConversion:
+  Enabled: true
+Style/HashExcept:
+  Enabled: true
+Style/IfWithBooleanLiteralBranches:
+  Enabled: true
+Style/InPatternThen:
+  Enabled: true
+Style/MultilineInPatternThen:
+  Enabled: true
+Style/NegatedIfElseCondition:
+  Enabled: true
+Style/NilLambda:
+  Enabled: true
+Style/QuotedSymbols:
+  Enabled: true
+Style/RedundantArgument:
+  Enabled: true
+Style/KeywordParametersOrder:
+  Enabled: false
+Style/StringChars:
+  Enabled: true
+Style/SwapValues:
+  Enabled: true
+Rails/AddColumnIndex:
+  Enabled: true
+Rails/AfterCommitOverride:
+  Enabled: true
+Rails/AttributeDefaultBlockValue:
+  Enabled: true
+Rails/EagerEvaluationLogMessage:
+  Enabled: true
+Rails/ExpandedDateRange:
+  Enabled: true
+Rails/I18nLocaleAssignment:
+  Enabled: true
+Rails/SquishedSQLHeredocs:
+  Enabled: true
+Rails/TimeZoneAssignment:
+  Enabled: true
+Rails/UnusedIgnoredColumns:
+  Enabled: true
+Rails/WhereEquals:
+  Enabled: true
+Rails/WhereNot:
+  Enabled: true
