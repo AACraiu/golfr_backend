@@ -12,7 +12,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.1
+          ruby-version: '3.0.1'
           bundler-cache: true
       - name: Setup pronto
         run: gem install pronto pronto-rubocop rubocop-rails rubocop-gitlab-security pronto-brakeman pronto-fasterer pronto-flay --conservative
