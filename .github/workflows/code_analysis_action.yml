@@ -20,3 +20,25 @@ jobs:
         env:
           PRONTO_PULL_REQUEST_ID: ${{ github.event.pull_request.number }}
           PRONTO_GITHUB_ACCESS_TOKEN: ${{ github.token }}
+  tests:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+    services:
+      postgres:
+        image: postgres:12.8
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0.1'
+      - name: Bundle install
+        run: |
+          gem install bundler
+          bundle install
+      - name: Setup database
+        run: rails db:create db:schema:load
+      - name: Run tests
+        run: bundle exec rspec
