@@ -28,6 +28,8 @@ jobs:
       postgres:
         image: postgres:12.8
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        env:
+          POSTGRES_PASSWORD: postgres
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
