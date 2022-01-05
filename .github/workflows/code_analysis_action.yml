@@ -24,12 +24,16 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
+      # POSTGRES_USERNAME: postgres
+      # POSTGRES_PASSWORD: postgres
     services:
       postgres:
         image: postgres:12.8
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
         env:
           POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        ports:
+          - 5432:5432
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -37,13 +41,18 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.0.1'
+      # - name: Install database dependencies
+      #   run: |
+      #     sudo apt-get update -y
+      #     sudo apt-get install libpq-dev postgresql -y
+      #     sudo service postgresql start
       - name: Bundle install
         run: |
           gem install bundler
-          bundle install
-      - name: Create database.yml
-        run: cp config/_sample_database.yml config/database.yml
+          bundle install --jobs 4 --retry 3
       - name: Setup database
-        run: rails db:create db:schema:load
+        run: |
+          cp config/_sample_database.yml config/database.yml
+          rails db:create db:schema:load
       - name: Run tests
         run: bundle exec rspec
