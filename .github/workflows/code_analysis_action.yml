@@ -50,6 +50,15 @@ jobs:
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
+      - name: DEBUG - Check if database is running
+        run: |
+          echo `ps -ef | grep postgres`
+      - name: DEBUG - Check if service is running
+        run: |
+          echo `find /tmp/ -name .s.PGSQL.5432`
+      - name: DEBUG - Check if local sockets are allowed
+        run: |
+          cat `find ~/ -name pg_hba.conf`
       - name: Setup database
         run: |
           cp config/_sample_database.yml config/database.yml
