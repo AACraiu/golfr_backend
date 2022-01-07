@@ -24,12 +24,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
-      # POSTGRES_USERNAME: postgres
-      # POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: localhost
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     services:
       postgres:
         image: postgres:12.8
         env:
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
         ports:
@@ -41,7 +43,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.0.1'
-      # - name: Install database dependencies
+      # - name: Install database
       #   run: |
       #     sudo apt-get update -y
       #     sudo apt-get install libpq-dev postgresql -y
