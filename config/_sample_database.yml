@@ -4,12 +4,12 @@ default: &default
   pool: 10
   timeout: 10000
   port: 5432
-
-development:
-  <<: *default
   host: <%= ENV["POSTGRES_HOST"] {'localhost'} %>
   username: <%= ENV["POSTGRES_USER"] %>
   password: <%= ENV["POSTGRES_PASSWORD"] %>
+
+development:
+  <<: *default
   database: golfr_dev
 
 test:
