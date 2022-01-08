@@ -4,10 +4,12 @@ default: &default
   pool: 10
   timeout: 10000
   port: 5432
+  host: localhost
+  username: postgres
+  password: postgres
 
 development:
   <<: *default
-  host: localhost
   database: golfr_dev
 
 test:
