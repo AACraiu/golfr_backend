@@ -6,6 +6,7 @@ module Api
     def login
       user = User.find_by('lower(email) = ?', params[:email])
 
+      puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
       if user.blank? || !user.valid_password?(params[:password])
         render json: {
           errors: [
