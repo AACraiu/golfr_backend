@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac9fed27-43a5-42ab-8c79-252923e09609" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.rubocop.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.rubocop.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/api/scores_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/scores_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/controllers/api/scores_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/api/scores_controller_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,7 +301,7 @@
       <workItem from="1656058428802" duration="17000" />
       <workItem from="1656058521163" duration="24362000" />
       <workItem from="1656661320663" duration="4515000" />
-      <workItem from="1656667724498" duration="2174000" />
+      <workItem from="1656667724498" duration="2712000" />
     </task>
     <servers />
   </component>
