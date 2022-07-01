@@ -103,5 +103,22 @@ describe Api::ScoresController, type: :request do
       expect(response).not_to have_http_status(:ok)
       expect(Score.count).to eq score_count
     end
+
+    describe 'GET feed' do
+      it 'should return the most recent 25 scores' do
+        26.times do
+          create(:score, user: @user1, total_score: 67, played_at: '2020-06-18')
+        end
+
+        get api_feed_path
+
+        expect(response).to have_http_status(:ok)
+
+        response_hash = JSON.parse(response.body)
+        score_hash = response_hash['scores']
+
+        expect(score_hash.length).to eq 25
+      end
+    end
   end
 end
