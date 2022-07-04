@@ -14,7 +14,7 @@ jobs:
         with:
           ruby-version: '3.0.1'
       - name: Setup pronto
-        run: gem install pronto pronto-rubocop rubocop-rails rubocop-gitlab-security pronto-brakeman pronto-fasterer pronto-flay --conservative
+        run: gem install 'pronto:0.11.0' 'rubocop:1.27.0' 'pronto-rubocop:0.11.1' 'rubocop-rails:2.14.2' 'rubocop-gitlab-security:0.1.1' pronto-brakeman pronto-fasterer pronto-flay --conservative
       - name: Run Pronto
         run: pronto run -f github_status github_pr -c origin/${{ github.base_ref }}
         env:
