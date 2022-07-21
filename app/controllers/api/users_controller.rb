@@ -26,5 +26,28 @@ module Api
         }
       }.to_json
     end
+
+    def show
+      user = User.find_by(id: params[:id])
+
+      if user == nil
+        response = {
+        error: "user does not exist",
+        }
+
+        render json: response.to_json
+        return
+      end
+
+      scores = user.scores
+
+      response = {
+        name: user.name,
+        scores: scores
+      }
+
+      render json: response.to_json
+
+    end
   end
 end
