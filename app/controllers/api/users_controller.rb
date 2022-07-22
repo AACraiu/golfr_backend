@@ -30,9 +30,9 @@ module Api
     def show
       user = User.find_by(id: params[:id])
 
-      if user == nil
+      if user.nil?
         response = {
-        error: "user does not exist",
+          error: "user does not exist",
         }
 
         render json: response.to_json
@@ -42,11 +42,11 @@ module Api
       scores = user.scores
 
       response = {
-        name: user.name,
-        scores: scores
-      }
+         name: user.name,
+         scores: scores
+       }
 
-      render json: response.to_json
+       render json: response.to_json
 
     end
   end
