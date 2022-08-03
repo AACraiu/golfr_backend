@@ -47,5 +47,6 @@ gem 'devise'
 gem 'devise-jwt'
 
 # Static code analysis
-gem 'rubocop-rails'
-gem 'rubocop-gitlab-security'
+gem 'rubocop', '1.27.0'
+gem 'rubocop-rails', '2.14.2'
+gem 'rubocop-gitlab-security', '0.1.1'
