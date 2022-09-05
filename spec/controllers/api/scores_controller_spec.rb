@@ -26,6 +26,10 @@ describe Api::ScoresController, type: :request do
       expect(scores[1]['total_score']).to eq 68
       expect(scores[2]['total_score']).to eq 79
     end
+
+    it 'should not fall in the N+1 query problem' do
+      expect { get api_feed_path }.not_to exceed_query_limit(2)
+    end
   end
 
   describe 'POST create' do
@@ -104,4 +108,5 @@ describe Api::ScoresController, type: :request do
       expect(Score.count).to eq score_count
     end
   end
+
 end
