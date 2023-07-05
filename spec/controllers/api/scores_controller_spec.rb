@@ -12,7 +12,9 @@ describe Api::ScoresController, type: :request do
   end
 
   describe 'GET feed' do
-    # it 'should return the token if valid username/password' do
+    it 'should return the token if valid username/password' do
+      get api_feed_path
+      expect(response).to have_http_status(:ok)
     it 'should return 25 scores on the feed' do
       30.times do
         create(:score, user: @user1, total_score: 79, played_at: '2021-05-20')
