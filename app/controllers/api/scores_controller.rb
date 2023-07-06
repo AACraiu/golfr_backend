@@ -30,6 +30,28 @@ module Api
       render json: response.to_json
     end
 
+    def create
+      score = current_user.scores.build(score_params)
+
+      if score.save
+        render json: {
+          score: score.serialize
+        }
+      else
+        render json: {
+          errors: score.errors.messages
+        }, status: :bad_request
+      end
+    end
+
+    def destroy
+      @score.destroy!
+
+      render json: {
+        score: @score.serialize
+      }
+    end
+
     private
 
     def score_params
