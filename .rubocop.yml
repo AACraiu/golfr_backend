@@ -305,3 +305,5 @@ Rails/WhereEquals:
   Enabled: true
 Rails/WhereNot:
   Enabled: true
+Lint/EmptyConditionalBody:
+  Enabled: false
