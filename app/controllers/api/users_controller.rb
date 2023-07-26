@@ -2,6 +2,7 @@ module Api
   # Controller that handles authorization and user data fetching
   class UsersController < ApplicationController
     include Devise::Controllers::Helpers
+    
     def login
       user = User.find_by('lower(email) = ?', params[:email])
 
