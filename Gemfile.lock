@@ -229,7 +229,6 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
-  x86_64-darwin-22
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
@@ -239,7 +238,7 @@ DEPENDENCIES
   devise-jwt
   factory_bot_rails
   listen (~> 3.3)
-  pg (~> 1.4)
+  pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
   rails (~> 6.1.4)
