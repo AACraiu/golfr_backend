@@ -3,6 +3,15 @@ module Api
   class UsersController < ApplicationController
     include Devise::Controllers::Helpers
 
+    def retrieve_user_data
+      user = User.find_by(id: params[:id])
+      if user
+        render json: { id: user.id, name: user.name }
+      else
+        render json: { error: 'User not found' }, status: :not_found
+      end
+    end
+
     def login
       user = User.find_by('lower(email) = ?', params[:email])
 
